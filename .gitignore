@@ -1,0 +1,19 @@
+# Ignore objects and archives, anywhere in the tree
+*.[oa]
+
+# Ignore all logs
+*.logs
+npm-debug.log*
+
+# Ignore node modules
+node_modules/
+
+# Ignore visual studio directory
+.vs/
+
+#ignore vscode directory
+.vscode/
+
+# Compiled binary addons
+build/
+build/release
