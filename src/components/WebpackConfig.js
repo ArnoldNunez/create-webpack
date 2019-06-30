@@ -1,5 +1,6 @@
 
 import FileWriter from './FileWriter';
+import WebpackModes from '../constants/WebpackModes';
 
 /**
  * Class WebpackConfig
@@ -8,7 +9,7 @@ import FileWriter from './FileWriter';
 class WebpackConfig {
     constructor() {
         console.log("creating webpackconfig object");
-        this.mode = 'development';
+        this.mode = WebpackModes.DEVELOPMENT;
         this.entry = './build';
         this.devTool = 'inline-source-map';
         this.output = {
@@ -19,8 +20,10 @@ class WebpackConfig {
     }
 
     /**
-     * Generates the data necessary to write the parameters to file.
+     * Generates the Webpack config contents and writes it to a file. This will create the file
+     * if it does not exist yet.
      * @param {string} workingDir The directory where the webpack file will be generated.
+     * @returns {string} The webpack config as a string.
      */
     generate(workingDir) {
         let content = `module.exports = {
@@ -33,6 +36,7 @@ class WebpackConfig {
         }`;
 
         FileWriter.createFile("webpack.config.js", content, workingDir);
+        return content;
     }
 }
 
