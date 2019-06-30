@@ -5,6 +5,7 @@
 import { expect } from 'chai';
 
 import DevServer from '../src/components/DevServer';
+import ExecutionContext from '../src/components/ExecutionContext';
 
 describe('DevServer', () => {
     it('constructor(): DevServer should be disabled by default', () => {
@@ -64,18 +65,21 @@ describe('DevServer', () => {
 
     it('set contentBase(value): Should set contentBase as a relative path when passing in full path', () => {
         const devServer = new DevServer();
+        ExecutionContext.projectRoot = 'C:/users/some/path/to/root';
         const expectedResult = './a/path/build';
         devServer.contentBase = 'C:/users/some/path/to/root/a/path/build';
         expect(devServer._contentBase).to.equal("./a/path/build");
     });
     it('set contentBase(value): Should contentBase as relative path when passing in relative path', () => {
         const devServer = new DevServer();
-        const expectedResult = './a/path/build';    
+        ExecutionContext.projectRoot = 'C:/users/some/path/to/root';
+        const expectedResult = './a/path/build';
         devServer.contentBase = './a/path/build';
         expect(devServer._contentBase).to.equal("./a/path/build");
     });
     it('set contentBase(value): Should set url slashes as (/) character regardless of input slash scheme.', () => {
         const devServer = new DevServer();
+        ExecutionContext.projectRoot = 'C:/users/some/path/to/root';
         const expectedResult = './a/path/build';    
         devServer.contentBase = 'C:\\users\\some\\path\\to\\root\\a\\path\\build';
         expect(devServer._contentBase).to.equal("./a/path/build");
@@ -107,6 +111,36 @@ describe('DevServer', () => {
         const expectedResult = '';
         const devServer = new DevServer();
         devServer.enabled = false;
+
+        expect(devServer.toString()).to.equal(expectedResult);
+    });
+    it('toString(): should return object as text with correct paramters. 1', () => {
+        const expectedResult = `devServer: {
+    contentBase: './Build',
+    port: 2351,
+    publicPath: 'http://some/url/'
+}`;
+        const devServer = new DevServer();
+        ExecutionContext.projectRoot = 'C:/Some/Path/To/Directory';
+        devServer.enabled = false;
+        devServer.contentBase = 'C:/Some/Path/To/Directory/Build';
+        devServer.port = 2351;
+        devServer.publicPath = 'http://some/url/';
+
+        expect(devServer.toString()).to.equal(expectedResult);
+    });
+    it('toString(): should return object as text with correct paramters. 2', () => {
+        const expectedResult = `devServer: {
+    contentBase: './build/base',
+    port: 53234,
+    publicPath: 'http://base/'
+}`;
+        const devServer = new DevServer();
+        ExecutionContext.projectRoot = 'C:/Some/Path/To/Directory';
+        devServer.enabled = false;
+        devServer.contentBase = './build/base';
+        devServer.port = 53234;
+        devServer.publicPath = 'http://base/';
 
         expect(devServer.toString()).to.equal(expectedResult);
     });
