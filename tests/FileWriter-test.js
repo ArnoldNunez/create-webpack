@@ -8,4 +8,3 @@ describe('Arithmetic', () => {
         expect(1 + 1).to.equal(expectedResult);
     });
 });
-
