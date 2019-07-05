@@ -87,17 +87,42 @@ describe('Rule', () => {
         expect(actualResult).to.equal(expectedResult);
     });
 
-    it('set use(): Should set use member variable to object of type Loaders', () => {
+    it('toString(): should return object as text with correct paramters. 1', () => {
         const rule = new Rule();
+        rule.test = '/\.js$/';
+        rule.exclude = [ '/node_modules/', '/tests/' ];
         rule.use = new Loaders();
-        const expectedResult = true;
-        const actualResult = rule._use instanceof Loaders;
+        rule.use.addLoader('babel-loader');
 
-        expect(actualResult).to.equal(expectedResult);
+        const expectedResult = `{
+    test: /\.js$/,
+    exclude: [
+        /node_modules/,
+        /tests/
+    ],
+    use: [
+        'babel-loader'
+    ]
+}`;
+
+        expect(rule.toString()).to.equal(expectedResult);
     });
 
-    it('toString(): should return object as text with correct paramters. 1', () => {
-        // TODO: implement test case.
+    it('toString(): should return object as text without exclude option when there are no excludes', () => {
+        const rule = new Rule();
+        rule.test = '/\.js$/';
+        rule.exclude = [];
+        rule.use = new Loaders();
+        rule.use.addLoader('babel-loader');
+
+        const expectedResult = `{
+    test: /\.js$/,
+    use: [
+        'babel-loader'
+    ]
+}`;
+
+        expect(rule.toString()).to.equal(expectedResult);
     });
 
 });

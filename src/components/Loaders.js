@@ -5,8 +5,26 @@
  */
 class Loaders {
     constructor() {
-        this.loader = [];
-        this.options = null;
+        this._loader = [];
+        this._options = null;
+    }
+
+    /**
+     * Adds a loader as a string to the loaders array.
+     * If the loader already exists nothing will be added.
+     * @param {string} loader 
+     */
+    addLoader(loader) {
+        let exists = false;
+
+        for (let i = 0; i < this._loader.length; i++) {
+            if (this._loader[i].toLowerCase() === loader.toLowerCase()) {
+                exists = true;
+            }
+        }
+
+        if (exists) { return; }
+        this._loader.push(loader);
     }
 
     /**
@@ -18,3 +36,5 @@ class Loaders {
         
     }
 }
+
+export default Loaders;
