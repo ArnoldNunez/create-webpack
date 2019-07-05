@@ -5,30 +5,22 @@
  */
 class Loaders {
     constructor() {
-        this._loader = [];
-        this._options = null;
+        // The list of loaders used for a specific rule.
+        this._loaders = [];
     }
 
+    get loaders() { return this._loaders; }
+    set loaders(value) { this._loaders = value; }
+
     /**
-     * Adds a loader as a string to the loaders array.
-     * If the loader already exists nothing will be added.
-     * @param {string} loader 
+     * Adds a loader to the list of loaders for a given rule.
+     * @param {Loader} loader The Loader object to add to this rule > use param
      */
     addLoader(loader) {
-        let exists = false;
-
-        for (let i = 0; i < this._loader.length; i++) {
-            if (this._loader[i].toLowerCase() === loader.toLowerCase()) {
-                exists = true;
-            }
-        }
-
-        if (exists) { return; }
-        this._loader.push(loader);
     }
 
     /**
-     * Takes all the data representing a loader and returns
+     * Takes all the data representing the list of loaders and returns
      * the final output string.
      * @returns {string} The final output string
      */
