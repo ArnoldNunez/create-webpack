@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import WebpackConfig from './components/WebpackConfig';
+import WebpackConfig from './model/WebpackConfig';
 
 class App extends React.Component {
     constructor() {

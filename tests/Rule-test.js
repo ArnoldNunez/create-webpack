@@ -4,8 +4,8 @@
 
 import { expect } from 'chai';
 
-import Rule from '../src/components/Rule';
-import Loaders from '../src/components/Loaders';
+import Rule from '../src/model/Rule';
+import Loaders from '../src/model/Loaders';
 
 describe('Rule', () => {
     it('constructor(): All member variables should be null.', () => {

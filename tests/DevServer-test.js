@@ -4,8 +4,8 @@
 
 import { expect } from 'chai';
 
-import DevServer from '../src/components/DevServer';
-import ExecutionContext from '../src/components/ExecutionContext';
+import DevServer from '../src/model/DevServer';
+import ExecutionContext from '../src/model/ExecutionContext';
 
 describe('DevServer', () => {
     it('constructor(): DevServer should be disabled by default', () => {

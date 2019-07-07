@@ -4,7 +4,7 @@
 
 import { expect } from 'chai';
 
-import Loader from '../src/components/Loader';
+import Loader from '../src/model/Loader';
 
 describe('Loader', () => {
     /// Constructors
