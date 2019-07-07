@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Button from '@material-ui/core/Button';
 
 import WebpackConfig from './model/WebpackConfig';
 
@@ -37,14 +39,16 @@ class App extends React.Component {
 
         return (
             <div className="app">
+                <CssBaseline />
                 <h1>Hello from React.</h1>
-                <label for="workingDir">Location: </label>
+                <label htmlFor="workingDir">Location: </label>
                 <input 
                     type="text"
                     name="workingDir"
                     value={this.state.workingDir}
                     onChange={this.handleInputChange} />
                 <button onClick={this.generate}>Generate</button>
+                <Button variant="contained" color="primary" >Hello Material</Button>
             </div>
         );
     }
