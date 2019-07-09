@@ -1,0 +1,81 @@
+/**
+ * TitleBar.scss
+ * Styles for the Titlebar component
+ */
+
+.title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #333;
+    height: 35px;
+    // padding: 10px 10px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: inherit;
+    padding: 0 5px;
+    // background-color: green;
+}
+
+.execution-path {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // background-color: aqua;
+    text-align: center;
+    flex-grow: 1;
+    color: #ccc;
+    height: inherit;
+
+    font-size: .8rem;
+}
+
+.window-nav {
+    display: flex;
+    // background-color: pink;
+    text-align: center;
+    height: inherit;
+
+    &__btn {
+        background-color: inherit;
+        color: #ccc;
+        border: none;
+        outline: none;
+        padding: 0 10px;
+
+        &:focus {
+            background-color: inherit;
+            color: #ccc;
+            border: none;
+            outline: none;
+            padding: 0 10px;
+        }
+
+        &:hover {
+            background-color: #555;
+            border: none;
+        }
+
+        &:active {
+            background-color: #777;
+            border: none;
+        }
+
+        &--red {
+
+            &:hover {
+                background-color: red;
+            }
+
+            &:active {
+                background-color: darkred;
+            }
+        }
+    }
+
+}

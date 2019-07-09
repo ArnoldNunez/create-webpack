@@ -15,7 +15,8 @@ class WindowFrame extends React.Component {
 
         return (
             <div className="window-frame">
-
+                <TitleBar />
+                <FileMenuBar />
             </div>
         );
     }

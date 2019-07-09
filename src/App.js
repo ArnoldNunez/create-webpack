@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 
 import WebpackConfig from './model/WebpackConfig';
 
+import WindowFrame from './components/WindowFrame';
+
 class App extends React.Component {
     constructor() {
         super();
@@ -40,6 +42,7 @@ class App extends React.Component {
         return (
             <div className="app">
                 <CssBaseline />
+                <WindowFrame />
                 <h1>Hello from React.</h1>
                 <label htmlFor="workingDir">Location: </label>
                 <input 
