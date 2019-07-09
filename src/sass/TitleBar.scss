@@ -9,7 +9,6 @@
     align-items: center;
     background-color: #333;
     height: 35px;
-    // padding: 10px 10px;
 }
 
 .logo {
@@ -18,7 +17,9 @@
     justify-content: center;
     height: inherit;
     padding: 0 5px;
-    // background-color: green;
+
+    /* Add support for dragging the window, see: https://electronjs.org/docs/api/frameless-window#draggable-region */
+    -webkit-app-region: drag;
 }
 
 .execution-path {
@@ -26,18 +27,19 @@
     flex-direction: column;
     justify-content: center;
 
-    // background-color: aqua;
     text-align: center;
     flex-grow: 1;
     color: #ccc;
     height: inherit;
 
     font-size: .8rem;
+
+    /* Add support for dragging the window, see: https://electronjs.org/docs/api/frameless-window#draggable-region */
+    -webkit-app-region: drag;
 }
 
 .window-nav {
     display: flex;
-    // background-color: pink;
     text-align: center;
     height: inherit;
 
@@ -78,4 +80,9 @@
         }
     }
 
+
+    // Fix for clicking on svg inside button returning unexpected target.id
+    &__btn > *{
+        pointer-events: none;
+    }
 }
